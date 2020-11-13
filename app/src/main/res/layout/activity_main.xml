@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
 <FrameLayout android:name="com.example.djiryzetellocommander"
     android:id="@+id/menu_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" />
+    />
+    <fragment android:name="com.example.djiryzetellocommander.AboutFragment"
+        android:id="@+id/about_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <fragment android:name="com.example.djiryzetellocommander.SimpleRunFragment"
+        android:id="@+id/simple_run_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</androidx.appcompat.widget.LinearLayoutCompat>

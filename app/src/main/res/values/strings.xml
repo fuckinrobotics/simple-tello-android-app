@@ -1,6 +1,13 @@
 <resources>
-    <string name="app_name">Tellosimple</string>
+    <string name="app_name">Tello App Simple</string>
     <string name="text_menu">Menu</string>
     <string name="btn_start">Run</string>
     <string name="btn_about">About</string>
+    <string name="text_about">About application</string>
+    <string name="text_description_app">This app develop by Alisher Yuldashov to simply run Dji Ryze Tello drone. It conclude three types of command such as "Take off", land and clockwise. Best regards, https://github.com/fuckinrobotics.</string>
+    <string name="btn_back_about">Back</string>
+    <string name="btn_back_simple_run">Back</string>
+    <string name="btn_clockwise">Clockwise</string>
+    <string name="btn_land">Land</string>
+    <string name="btn_take_off">Take Off</string>
 </resources>

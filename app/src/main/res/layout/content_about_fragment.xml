@@ -5,31 +5,31 @@
     android:background="@color/colorWhite"
     android:padding="6dp"
     xmlns:tools="http://schemas.android.com/tools">
-    <TextView android:id="@+id/text_menu"
+    <TextView android:id="@+id/text_about"
         tools:text="Default name"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:gravity="center"
         android:textColor="@color/colorWhite"
         android:background="@color/colorBlack"
-        android:layout_above="@+id/btn_start"
+        android:layout_above="@+id/text_description_app"
+        />
+    <TextView android:id="@+id/text_description_app"
+        tools:text="Default name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:textColor="@color/colorBlack"
+        android:layout_marginTop="6dp"
+        android:layout_above="@+id/btn_back_about"
         />
     <Button
-        android:id="@+id/btn_start"
+        android:id="@+id/btn_back_about"
+        android:layout_marginTop="6dp"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="6dp"
         android:textColor="@color/colorWhite"
         android:background="@color/colorBlue"
         android:layout_centerVertical="true"
         />
-    <Button
-        android:id="@+id/btn_about"
-        android:layout_marginTop="6dp"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:textColor="@color/colorWhite"
-        android:background="@color/colorBlue"
-        android:layout_below="@+id/btn_start"
-        android:text="About app"/>
 </RelativeLayout>
