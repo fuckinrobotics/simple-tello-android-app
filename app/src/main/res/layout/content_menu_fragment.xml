@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    xmlns:tools="http://schemas.android.com/tools">
+    <TextView android:id="@+id/text_menu"
+        tools:text="Default name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="36dp"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorBlue"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" />
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorBlue"
+
+        android:text="Run"/>
+    <Button
+        android:id="@+id/btn_about"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorBlue"
+        android:layout_centerHorizontal="true"
+        android:text="About app"/>
+</RelativeLayout>
