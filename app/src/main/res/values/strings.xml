@@ -10,4 +10,7 @@
     <string name="btn_clockwise">Clockwise</string>
     <string name="btn_land">Land</string>
     <string name="btn_take_off">Take Off</string>
+    <string name="command_land">Take Off</string>
+    <string name="command_take_off">Take Off</string>
+    <string name="command_clockwise">Take Off</string>
 </resources>
