@@ -2,6 +2,9 @@ package com.example.djiryzetellocommander;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,16 +19,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.Socket;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 
 public class SimpleRunFragment extends Fragment {
-    public JTello drone = new JTello();
-    // Инициализация view
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
     }
 
@@ -45,55 +52,253 @@ public class SimpleRunFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         // инициализируем View для отображения списка
         Button btnBackSimpleRun = view.findViewById(R.id.btn_back_simple_run);
-       // String n1 = "Command";
-     //   new Thread(new Thread3(n1)).start();
+
         btnBackSimpleRun.setText(R.string.btn_back_simple_run);
         btnBackSimpleRun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 getFragmentManager().popBackStack();
             }
         });
-        Button btnClockwise = view.findViewById(R.id.btn_clockwise);
+        final Button btnClockwise = view.findViewById(R.id.btn_clockwise);
         btnClockwise.setText(R.string.btn_clockwise);
+        btnClockwise.setClickable(false);
         btnClockwise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    drone.cw(180);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                Thread sendDate = new Thread() {
+                    @Override
+                    public void run() {
+                        String serverString = "192.168.10.1";
+                        int port = 8889;
+
+
+                        Log.d("adam", "Debug");
+
+
+
+                        DatagramSocket socket = null ;
+
+
+
+                        String msg = "cv 360";
+
+
+
+                        try {
+                            socket = new DatagramSocket() ;
+
+
+
+                            InetAddress host = InetAddress.getByName(serverString);
+                            byte [] data = msg.getBytes() ;
+                            DatagramPacket packet = new DatagramPacket( data, data.length, host, port );
+                            Log.d("adam", "Debug2");
+
+
+
+                            socket.send(packet) ;
+
+
+
+                            Log.d("adam", "Packet sent" );
+                        } catch( Exception e )
+                        {
+                            Log.d("adam", "Exception");
+                            Log.e("adam", Log.getStackTraceString(e));
+                        }
+                        finally
+                        {
+                            if( socket != null ) {
+                                socket.close();
+                            }
+                        }
+                    }
+                };
+                sendDate.start();
+
             }
         });
-        Button btnLand = view.findViewById(R.id.btn_land);
+        final Button btnLand = view.findViewById(R.id.btn_land);
         btnLand.setText(R.string.btn_land);
+        btnLand.setClickable(false);
         btnLand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    drone.land();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+
+                Thread sendDate = new Thread() {
+                    @Override
+                    public void run() {
+                        String serverString = "192.168.10.1";
+                        int port = 8889;
+
+
+                        Log.d("adam", "Debug");
+
+
+
+                        DatagramSocket socket = null ;
+
+
+
+                        String msg = "land";
+
+
+
+                        try {
+                            socket = new DatagramSocket() ;
+
+
+
+                            InetAddress host = InetAddress.getByName(serverString);
+                            byte [] data = msg.getBytes() ;
+                            DatagramPacket packet = new DatagramPacket( data, data.length, host, port );
+                            Log.d("adam", "Debug2");
+
+
+
+                            socket.send(packet) ;
+
+
+
+                            Log.d("adam", "Packet sent" );
+                        } catch( Exception e )
+                        {
+                            Log.d("adam", "Exception");
+                            Log.e("adam", Log.getStackTraceString(e));
+                        }
+                        finally
+                        {
+                            if( socket != null ) {
+                                socket.close();
+                            }
+                        }
+                    }
+                };
+                sendDate.start();
             }
         });
-        Button btnTakeOff = view.findViewById(R.id.btn_take_off);
+        final Button btnTakeOff = view.findViewById(R.id.btn_take_off);
         btnTakeOff.setText(R.string.btn_take_off);
+        btnTakeOff.setClickable(false);
         btnTakeOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    drone.connect();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                try {
-                    drone.takeOff();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                Thread sendDate = new Thread() {
+                    @Override
+                    public void run() {
+                        String serverString = "192.168.10.1";
+                        int port = 8889;
+
+
+                        Log.d("adam", "Debug");
+
+
+
+                        DatagramSocket socket = null ;
+
+
+
+                        String msg = "takeoff";
+
+
+
+                        try {
+                            socket = new DatagramSocket() ;
+
+
+
+                            InetAddress host = InetAddress.getByName(serverString);
+                            byte [] data = msg.getBytes() ;
+                            DatagramPacket packet = new DatagramPacket( data, data.length, host, port );
+                            Log.d("adam", "Debug2");
+
+
+
+                            socket.send(packet) ;
+
+
+
+                            Log.d("adam", "Packet sent" );
+                        } catch( Exception e )
+                        {
+                            Log.d("adam", "Exception");
+                            Log.e("adam", Log.getStackTraceString(e));
+                        }
+                        finally
+                        {
+                            if( socket != null ) {
+                                socket.close();
+                            }
+                        }
+                    }
+                };
+                sendDate.start();
+            }
+        });
+        Button btnConnect = view.findViewById(R.id.btn_connect);
+        btnConnect.setText(R.string.btn_connect);
+        btnConnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Thread sendDate = new Thread() {
+                    @Override
+                    public void run() {
+                        String serverString = "192.168.10.1";
+                        int port = 8889;
+
+
+                        Log.d("adam", "Debug");
+
+
+
+                        DatagramSocket socket = null ;
+
+
+
+                        String msg = "command";
+
+
+
+                        try {
+                            socket = new DatagramSocket() ;
+
+
+
+                            InetAddress host = InetAddress.getByName(serverString);
+                            byte [] data = msg.getBytes() ;
+                            DatagramPacket packet = new DatagramPacket( data, data.length, host, port );
+                            Log.d("adam", "Debug2");
+
+
+
+                            socket.send(packet) ;
+
+
+
+                            Log.d("adam", "Packet sent" );
+                        } catch( Exception e )
+                        {
+                            Log.d("adam", "Exception");
+                            Log.e("adam", Log.getStackTraceString(e));
+                        }
+
+                    }
+                };
+                sendDate.start();
+                btnTakeOff.setClickable(true);
+                btnClockwise.setClickable(true);
+                btnLand.setClickable(true);
+
             }
         });
     }
+
+
+
 }
+
+
+
+

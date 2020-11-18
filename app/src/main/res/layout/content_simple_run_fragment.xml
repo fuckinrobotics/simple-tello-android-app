@@ -40,4 +40,13 @@
         android:layout_above="@+id/btn_clockwise"
         android:layout_centerVertical="true"
     />
+    <Button
+        android:id="@+id/btn_connect"
+        android:layout_marginTop="6dp"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/btn_take_off"
+        android:layout_height="48dp"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorBlue"
+        android:layout_centerVertical="true" />
 </RelativeLayout>
