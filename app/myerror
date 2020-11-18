@@ -1,0 +1,17 @@
+E/AndroidRuntime: FATAL EXCEPTION: main
+    Process: com.example.djiryzetellocommander, PID: 32420
+    java.lang.NullPointerException: Attempt to invoke virtual method 'boolean java.net.DatagramSocket.isConnected()' on a null object reference
+        at com.example.djiryzetellocommander.JTello.sendCommand(JTello.java:181)
+        at com.example.djiryzetellocommander.JTello.takeOff(JTello.java:86)
+        at com.example.djiryzetellocommander.SimpleRunFragment$4.onClick(SimpleRunFragment.java:92)
+        at android.view.View.performClick(View.java:7259)
+        at android.view.View.performClickInternal(View.java:7236)
+        at android.view.View.access$3600(View.java:801)
+        at android.view.View$PerformClick.run(View.java:27892)
+        at android.os.Handler.handleCallback(Handler.java:883)
+        at android.os.Handler.dispatchMessage(Handler.java:100)
+        at android.os.Looper.loop(Looper.java:214)
+        at android.app.ActivityThread.main(ActivityThread.java:7356)
+        at java.lang.reflect.Method.invoke(Native Method)
+        at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:492)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:930)
