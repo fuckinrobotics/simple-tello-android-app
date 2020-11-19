@@ -28,8 +28,6 @@ import java.net.UnknownHostException;
 
 public class SimpleRunFragment extends Fragment {
 
-
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +50,10 @@ public class SimpleRunFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         // инициализируем View для отображения списка
         Button btnBackSimpleRun = view.findViewById(R.id.btn_back_simple_run);
-
         btnBackSimpleRun.setText(R.string.btn_back_simple_run);
         btnBackSimpleRun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 getFragmentManager().popBackStack();
             }
         });
@@ -67,57 +63,7 @@ public class SimpleRunFragment extends Fragment {
         btnClockwise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Thread sendDate = new Thread() {
-                    @Override
-                    public void run() {
-                        String serverString = "192.168.10.1";
-                        int port = 8889;
-
-
-                        Log.d("adam", "Debug");
-
-
-
-                        DatagramSocket socket = null ;
-
-
-
-                        String msg = "cv 360";
-
-
-
-                        try {
-                            socket = new DatagramSocket() ;
-
-
-
-                            InetAddress host = InetAddress.getByName(serverString);
-                            byte [] data = msg.getBytes() ;
-                            DatagramPacket packet = new DatagramPacket( data, data.length, host, port );
-                            Log.d("adam", "Debug2");
-
-
-
-                            socket.send(packet) ;
-
-
-
-                            Log.d("adam", "Packet sent" );
-                        } catch( Exception e )
-                        {
-                            Log.d("adam", "Exception");
-                            Log.e("adam", Log.getStackTraceString(e));
-                        }
-                        finally
-                        {
-                            if( socket != null ) {
-                                socket.close();
-                            }
-                        }
-                    }
-                };
-                sendDate.start();
-
+                sendMessage("cw 360");
             }
         });
         final Button btnLand = view.findViewById(R.id.btn_land);
@@ -126,57 +72,7 @@ public class SimpleRunFragment extends Fragment {
         btnLand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Thread sendDate = new Thread() {
-                    @Override
-                    public void run() {
-                        String serverString = "192.168.10.1";
-                        int port = 8889;
-
-
-                        Log.d("adam", "Debug");
-
-
-
-                        DatagramSocket socket = null ;
-
-
-
-                        String msg = "land";
-
-
-
-                        try {
-                            socket = new DatagramSocket() ;
-
-
-
-                            InetAddress host = InetAddress.getByName(serverString);
-                            byte [] data = msg.getBytes() ;
-                            DatagramPacket packet = new DatagramPacket( data, data.length, host, port );
-                            Log.d("adam", "Debug2");
-
-
-
-                            socket.send(packet) ;
-
-
-
-                            Log.d("adam", "Packet sent" );
-                        } catch( Exception e )
-                        {
-                            Log.d("adam", "Exception");
-                            Log.e("adam", Log.getStackTraceString(e));
-                        }
-                        finally
-                        {
-                            if( socket != null ) {
-                                socket.close();
-                            }
-                        }
-                    }
-                };
-                sendDate.start();
+                sendMessage("land");
             }
         });
         final Button btnTakeOff = view.findViewById(R.id.btn_take_off);
@@ -185,56 +81,7 @@ public class SimpleRunFragment extends Fragment {
         btnTakeOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Thread sendDate = new Thread() {
-                    @Override
-                    public void run() {
-                        String serverString = "192.168.10.1";
-                        int port = 8889;
-
-
-                        Log.d("adam", "Debug");
-
-
-
-                        DatagramSocket socket = null ;
-
-
-
-                        String msg = "takeoff";
-
-
-
-                        try {
-                            socket = new DatagramSocket() ;
-
-
-
-                            InetAddress host = InetAddress.getByName(serverString);
-                            byte [] data = msg.getBytes() ;
-                            DatagramPacket packet = new DatagramPacket( data, data.length, host, port );
-                            Log.d("adam", "Debug2");
-
-
-
-                            socket.send(packet) ;
-
-
-
-                            Log.d("adam", "Packet sent" );
-                        } catch( Exception e )
-                        {
-                            Log.d("adam", "Exception");
-                            Log.e("adam", Log.getStackTraceString(e));
-                        }
-                        finally
-                        {
-                            if( socket != null ) {
-                                socket.close();
-                            }
-                        }
-                    }
-                };
-                sendDate.start();
+                sendMessage("takeoff");
             }
         });
         Button btnConnect = view.findViewById(R.id.btn_connect);
@@ -242,61 +89,43 @@ public class SimpleRunFragment extends Fragment {
         btnConnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Thread sendDate = new Thread() {
-                    @Override
-                    public void run() {
-                        String serverString = "192.168.10.1";
-                        int port = 8889;
-
-
-                        Log.d("adam", "Debug");
-
-
-
-                        DatagramSocket socket = null ;
-
-
-
-                        String msg = "command";
-
-
-
-                        try {
-                            socket = new DatagramSocket() ;
-
-
-
-                            InetAddress host = InetAddress.getByName(serverString);
-                            byte [] data = msg.getBytes() ;
-                            DatagramPacket packet = new DatagramPacket( data, data.length, host, port );
-                            Log.d("adam", "Debug2");
-
-
-
-                            socket.send(packet) ;
-
-
-
-                            Log.d("adam", "Packet sent" );
-                        } catch( Exception e )
-                        {
-                            Log.d("adam", "Exception");
-                            Log.e("adam", Log.getStackTraceString(e));
-                        }
-
-                    }
-                };
-                sendDate.start();
+                sendMessage("command");
                 btnTakeOff.setClickable(true);
                 btnClockwise.setClickable(true);
                 btnLand.setClickable(true);
-
             }
         });
     }
 
-
-
+    private void sendMessage(final String message) {
+        //final Handler handler = new Handler();
+        Thread thread = new Thread(new Runnable() {
+            String stringData;
+            @Override
+            public void run() {
+                DatagramSocket ds = null;
+                try {
+                    ds = new DatagramSocket();
+                    // IP Address below is the IP address of that Device where server socket is opened.
+                    InetAddress serverAddr = InetAddress.getByName("192.168.10.1");
+                    DatagramPacket dp;
+                    dp = new DatagramPacket(message.getBytes(), message.length(), serverAddr, 8889);
+                    ds.send(dp);
+                    byte[] lMsg = new byte[1000];
+                    dp = new DatagramPacket(lMsg, lMsg.length);
+                    ds.receive(dp);
+                    stringData = new String(lMsg, 0, dp.getLength());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (ds != null) {
+                        ds.close();
+                    }
+                }
+            }
+        });
+        thread.start();
+    }
 }
 
 
