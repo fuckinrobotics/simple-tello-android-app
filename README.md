@@ -14,11 +14,11 @@ There are 3 screens.
 "About" fragment about application and developer.
 
 ## Simple commands related with 3 commands.
-###Command takeoff
+### Command takeoff
 It is command for take off drone.
-###Command clockwase
+### Command clockwase
 It is command for clockwase turn drone on 360 degrees.
-###Command land
+### Command land
 It is command for land my drone.
 
 ## Button back
