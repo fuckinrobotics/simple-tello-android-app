@@ -2,7 +2,7 @@
 It is android application to connect and send commands to DJI Ryze Tello drone.
 
 ## Version 1
-There are 3 screen.
+There are 3 screens.
 1. Menu 
 2. About
 3. Simple commands
